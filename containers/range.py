@@ -1,4 +1,7 @@
-def range(a, b=None, c=None):
+import builtins
+
+
+def range(*args):
     '''
     This function should behave exactly like the built-in range function.
     For example:
@@ -13,6 +16,7 @@ def range(a, b=None, c=None):
     HINT:
     If you can figure out how to use the built-in range function (without modifying the test cases!),
     then feel free to do so.
+    (Challenge accepted)
     That's fairly difficult to do, however, and it's much easier to just implement this function normally using the yield syntax.
 
     NOTE:
@@ -27,3 +31,5 @@ def range(a, b=None, c=None):
     Carefully written C code can be faster than the corresponding python code because it can remove some of the overhead of this automation process,
     but the resulting code is much longer and harder to read/write.
     '''
+    for x in builtins.range(*args):
+        yield x
