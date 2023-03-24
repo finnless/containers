@@ -18,18 +18,16 @@ class Node():
         self.left = left    # NOTE: left should always be a Node
         self.right = right  # NOTE: right should always be a Node
 
-    def __str__(self):
-        ret = '('
-        ret += str(self.value)
-        ret += ' - '
+    def __str__(self, level=0, side=None):
+        ret = ''
         if self.left:
-            ret += str(self.left)
-            ret += ' '
-        ret += '- '
+            ret += self.left.__str__(level + 1, '/')
+        ret += ' ' * 4 * level
+        if side:
+            ret += side + ' '
+        ret += str(self.value) + '\n'
         if self.right:
-            ret += str(self.right)
-            ret += ' '
-        ret += ')'
+            ret += self.right.__str__(level + 1, '\\')
         return ret
 
 
