@@ -157,6 +157,11 @@ class BinaryTree():
         if a right child exists, add the result of __len__helper on the right child;
         return the sum of these three steps
         '''
+        if node is None:
+            return 0
+        return BinaryTree.__len__helper(node.left) + \
+                BinaryTree.__len__helper(node.right) + \
+                1
 
     def height(self):
         '''
