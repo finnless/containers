@@ -127,8 +127,6 @@ class BinaryTree():
         else:
             raise ValueError('Traversal type ' + str(traversal_type) + ' is not supported.')
 
-
-
     def preorder(self, start, traversal):
         '''
         FIXME:
@@ -185,8 +183,8 @@ class BinaryTree():
         if node is None:
             return 0
         return BinaryTree.__len__helper(node.left) + \
-                BinaryTree.__len__helper(node.right) + \
-                1
+            BinaryTree.__len__helper(node.right) + \
+            1
 
     def height(self):
         '''
