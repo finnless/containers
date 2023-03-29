@@ -8,7 +8,7 @@ from containers.BinaryTree import BinaryTree, Node
 from containers.BST import BST
 
 
-class AVLTree():
+class AVLTree(BST):
     '''
     FIXME:
     AVLTree is currently not a subclass of BST.
@@ -21,6 +21,9 @@ class AVLTree():
         FIXME:
         Implement this function.
         '''
+        super().__init__()
+        if xs is not None:
+            self.insert_list(xs)
 
     def balance_factor(self):
         '''
