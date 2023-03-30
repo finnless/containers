@@ -75,11 +75,11 @@ class AVLTree(BST):
         The textbook's class hierarchy for their AVL tree code is fairly different from our class hierarchy,
         however, so you will have to adapt their code.
         '''
-        D = copy.copy(node)
-        D.right = copy.copy(node.right.left)
-        F = copy.copy(node.right)
-        F.left = D
-        return F
+        d = copy.copy(node)
+        d.right = copy.copy(node.right.left)
+        f = copy.copy(node.right)
+        f.left = d
+        return f
 
     @staticmethod
     def _right_rotate(node):
@@ -92,11 +92,11 @@ class AVLTree(BST):
         The textbook's class hierarchy for their AVL tree code is fairly different from our class hierarchy,
         however, so you will have to adapt their code.
         '''
-        F = copy.copy(node)
-        F.left = copy.copy(node.left.right)
-        D = copy.copy(node.left)
-        D.right = F
-        return D
+        f = copy.copy(node)
+        f.left = copy.copy(node.left.right)
+        d = copy.copy(node.left)
+        d.right = f
+        return d
 
     def insert(self, value):
         '''
