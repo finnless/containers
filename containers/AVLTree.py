@@ -52,6 +52,16 @@ class AVLTree(BST):
         FIXME:
         Implement this function.
         '''
+        if not node:
+            return True
+        ret = False
+        if AVLTree._balance_factor(node) in [-1, 0, 1]:
+            ret = True
+        if node.left:
+            ret &= AVLTree._is_avl_satisfied(node.left)
+        if node.right:
+            ret &= AVLTree._is_avl_satisfied(node.right)
+        return ret
 
     @staticmethod
     def _left_rotate(node):
