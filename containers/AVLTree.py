@@ -6,7 +6,7 @@ but there are fewer of them.
 
 from containers.BinaryTree import BinaryTree, Node
 from containers.BST import BST
-
+import copy
 
 class AVLTree(BST):
     '''
@@ -74,6 +74,11 @@ class AVLTree(BST):
         The textbook's class hierarchy for their AVL tree code is fairly different from our class hierarchy,
         however, so you will have to adapt their code.
         '''
+        D = copy.copy(node)
+        D.right = copy.copy(node.right.left)
+        F = copy.copy(node.right)
+        F.left = D
+        return F
 
     @staticmethod
     def _right_rotate(node):
@@ -86,6 +91,12 @@ class AVLTree(BST):
         The textbook's class hierarchy for their AVL tree code is fairly different from our class hierarchy,
         however, so you will have to adapt their code.
         '''
+        F = copy.copy(node)
+        F.left = copy.copy(node.left.right)
+        D = copy.copy(node.left)
+        D.right = F
+        return D
+
 
     def insert(self, value):
         '''
