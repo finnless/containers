@@ -8,6 +8,7 @@ from containers.BinaryTree import BinaryTree, Node
 from containers.BST import BST
 import copy
 
+
 class AVLTree(BST):
     '''
     FIXME:
@@ -97,7 +98,6 @@ class AVLTree(BST):
         D.right = F
         return D
 
-
     def insert(self, value):
         '''
         FIXME:
@@ -113,6 +113,10 @@ class AVLTree(BST):
         The code should look very similar to the code for your insert function for the BST,
         but it will also call the left and right rebalancing functions.
         '''
+        if self.root:
+            AVLTree._insert(self.root, value)
+        else:
+            self.root = Node(value)
 
     @staticmethod
     def _rebalance(node):
@@ -122,3 +126,36 @@ class AVLTree(BST):
         But both the insert function needs the rebalancing code,
         so I recommend including that code here.
         '''
+        if AVLTree._balance_factor(node) > 1:
+            if AVLTree._balance_factor(node.left) < 0:
+                node.left = AVLTree._left_rotate(node.left)
+            node_rr = AVLTree._right_rotate(node)
+            node.value = node_rr.value
+            node.left = node_rr.left
+            node.right = node_rr.right
+        elif AVLTree._balance_factor(node) < -1:
+            if AVLTree._balance_factor(node.right) > 0:
+                node.right = AVLTree._right_rotate(node.right)
+            node_lr = AVLTree._left_rotate(node)
+            node.value = node_lr.value
+            node.left = node_lr.left
+            node.right = node_lr.right
+
+    @staticmethod
+    def _insert(node, value):
+        '''
+        Helpful function for insert
+        '''
+        if not node:
+            node.value = Node(value)
+        if value < node.value:
+            if node.left:
+                AVLTree._insert(node.left, value)
+            else:
+                node.left = Node(value)
+        if value > node.value:
+            if node.right:
+                AVLTree._insert(node.right, value)
+            else:
+                node.right = Node(value)
+        AVLTree._rebalance(node)
