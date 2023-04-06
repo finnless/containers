@@ -65,16 +65,12 @@ class Heap(BinaryTree):
         '''
         if node:
             if node.left and node.right:
-                return node.value <= node.left.value and \
-                        node.value <= node.right.value and \
-                        Heap._is_heap_satisfied(node.left) and \
-                        Heap._is_heap_satisfied(node.right)
+                return node.value <= node.left.value and node.value <= node.right.value and \
+                    Heap._is_heap_satisfied(node.left) and Heap._is_heap_satisfied(node.right)
             elif node.left:
-                return node.value <= node.left.value and \
-                        Heap._is_heap_satisfied(node.left)
+                return node.value <= node.left.value and Heap._is_heap_satisfied(node.left)
             elif node.right:
-                return node.value <= node.right.value and \
-                        Heap._is_heap_satisfied(node.right)
+                return node.value <= node.right.value and Heap._is_heap_satisfied(node.right)
         return True
 
     def insert(self, value):
